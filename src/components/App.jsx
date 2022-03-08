@@ -11,22 +11,8 @@ class CounterFeedback extends Component {
     bad: 0,
   };
 
-  countGoodFeedback = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  countNeutralFeedback = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  countBadFeedback = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }));
+  countFeedback = options => {
+    this.setState({ [options]: this.state[options] + 1 });
   };
 
   countTotalFeedback() {
@@ -46,12 +32,8 @@ class CounterFeedback extends Component {
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['Good', 'Neutral', 'Bad']}
-            onLeaveFeedback={[
-              this.countGoodFeedback,
-              this.countNeutralFeedback,
-              this.countBadFeedback,
-            ]}
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.countFeedback}
           />
         </Section>
         <Section title="Statisctics">
