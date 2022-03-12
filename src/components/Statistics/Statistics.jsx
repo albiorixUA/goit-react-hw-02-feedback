@@ -1,12 +1,13 @@
 import Item from './Statistics.styled';
 import propTypes from 'prop-types';
 
-const Statisctics = ({ good, neutral, bad, total, positivePercentage }) => (
+const Statisctics = ({ options, positivePercentage }) => (
   <ul>
-    <Item> Good:{good}</Item>
-    <Item>Neutral:{neutral}</Item>
-    <Item> Bad: {bad}</Item>
-    <Item> Total :{total} </Item>
+    {options.map(el => (
+      <Item key={el}>
+        {el[0]}:{el[1]}
+      </Item>
+    ))}
     <Item>Positive feedback :{positivePercentage}</Item>
   </ul>
 );

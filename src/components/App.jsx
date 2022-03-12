@@ -26,22 +26,20 @@ class CounterFeedback extends Component {
   }
 
   render() {
-    const { good, neutral, bad } = this.state;
+    console.log(this.state);
 
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.countFeedback}
           />
         </Section>
         <Section title="Statisctics">
           {this.countTotalFeedback() > 0 ? (
             <Statisctics
-              good={good}
-              neutral={neutral}
-              bad={bad}
+              options={Object.entries(this.state)}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
